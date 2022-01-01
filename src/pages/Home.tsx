@@ -1,3 +1,4 @@
+import { Box, Button, Container, Flex, Stack, Text } from "@chakra-ui/react";
 import useStore from "../store/store";
 
 function Home() {
@@ -6,13 +7,17 @@ function Home() {
 	const decrement = useStore((state) => state.decrement);
 
 	return (
-		<div className="App">
-			<div className="counter">{counter}</div>
-			<div>
-				<button onClick={increment}>Increment</button>
-				<button onClick={decrement}>Decrement</button>
-			</div>
-		</div>
+		<Container height="100vh">
+			<Flex direction="column" align="center" justify="center" height="100%">
+				<Text fontSize="1.5rem" fontWeight="600">
+					{counter}
+				</Text>
+				<Stack direction="row" mt="4">
+					<Button onClick={increment}>Increment</Button>
+					<Button onClick={decrement}>Decrement</Button>
+				</Stack>
+			</Flex>
+		</Container>
 	);
 }
 
