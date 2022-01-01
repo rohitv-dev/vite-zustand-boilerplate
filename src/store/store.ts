@@ -1,6 +1,7 @@
 import create from "zustand";
+import userStore, { UserStore } from "./userStore";
 
-interface Store {
+export interface Store extends UserStore {
 	counter: number;
 
 	increment(): void;
@@ -9,6 +10,8 @@ interface Store {
 
 const useStore = create<Store>((set, get) => ({
 	counter: 0,
+
+	...userStore(set, get),
 
 	increment() {
 		set({ counter: get().counter + 1 });
